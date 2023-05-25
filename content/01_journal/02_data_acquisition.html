@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Jeevan Kumar Hemasunder Latha">
 
 <title>MyLabJournal - Data Acquisition</title>
 <style>
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,6 +125,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -131,7 +197,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#challenge-2.1-getting-data-from-openweathermap.org-using-api" id="toc-challenge-2.1-getting-data-from-openweathermap.org-using-api" class="nav-link active" data-scroll-target="#challenge-2.1-getting-data-from-openweathermap.org-using-api"><span class="toc-section-number">1</span>  Challenge 2.1 : Getting data from openweathermap.org using API</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -148,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Jeevan Kumar Hemasunder Latha </p>
           </div>
   </div>
     
@@ -159,21 +231,138 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="challenge-2.1-getting-data-from-openweathermap.org-using-api" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Challenge 2.1 : Getting data from openweathermap.org using API</h1>
+<p>##Load Libraries</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_70a6e3166e8b7c53ba8bc6cbe6e1c39b">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0
+#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#&gt; ✔ purrr     1.0.1     
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()
+#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'magrittr'
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     set_names
+#&gt; 
+#&gt; The following object is masked from 'package:tidyr':
+#&gt; 
+#&gt;     extract</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">library</span>(httr)</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'jsonlite'
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     flatten</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(rvest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'rvest'
+#&gt; 
+#&gt; The following object is masked from 'package:readr':
+#&gt; 
+#&gt;     guess_encoding</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+<p>##Rendering content from openweathermap.org with a personal API key</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_58a7bbe7b497880daf3c6d35e536a17b">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>resp <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://api.openweathermap.org/data/2.5/weather?q=Hamburg&amp;appid=2b60954937a5a13b2d465e54edad9aa2"</span>)   <span class="co">#Reading content from the website</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>weather_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(resp, <span class="st">"text"</span>)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">as.data.frame</span>()                               <span class="co">#converting the raw data into text format and creating a data fram</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>weather_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["coord.lon"],"name":[1],"type":["int"],"align":["right"]},{"label":["coord.lat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["weather.id"],"name":[3],"type":["int"],"align":["right"]},{"label":["weather.main"],"name":[4],"type":["chr"],"align":["left"]},{"label":["weather.description"],"name":[5],"type":["chr"],"align":["left"]},{"label":["weather.icon"],"name":[6],"type":["chr"],"align":["left"]},{"label":["base"],"name":[7],"type":["chr"],"align":["left"]},{"label":["main.temp"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["main.feels_like"],"name":[9],"type":["int"],"align":["right"]},{"label":["main.temp_min"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["main.temp_max"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["main.pressure"],"name":[12],"type":["int"],"align":["right"]},{"label":["main.humidity"],"name":[13],"type":["int"],"align":["right"]},{"label":["visibility"],"name":[14],"type":["int"],"align":["right"]},{"label":["wind.speed"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["wind.deg"],"name":[16],"type":["int"],"align":["right"]},{"label":["all"],"name":[17],"type":["int"],"align":["right"]},{"label":["dt"],"name":[18],"type":["int"],"align":["right"]},{"label":["sys.type"],"name":[19],"type":["int"],"align":["right"]},{"label":["sys.id"],"name":[20],"type":["int"],"align":["right"]},{"label":["sys.country"],"name":[21],"type":["chr"],"align":["left"]},{"label":["sys.sunrise"],"name":[22],"type":["int"],"align":["right"]},{"label":["sys.sunset"],"name":[23],"type":["int"],"align":["right"]},{"label":["timezone"],"name":[24],"type":["int"],"align":["right"]},{"label":["id"],"name":[25],"type":["int"],"align":["right"]},{"label":["name"],"name":[26],"type":["chr"],"align":["left"]},{"label":["cod"],"name":[27],"type":["int"],"align":["right"]}],"data":[{"1":"10","2":"53.55","3":"801","4":"Clouds","5":"few clouds","6":"02d","7":"stations","8":"290.56","9":"290","10":"289.03","11":"293.24","12":"1026","13":"63","14":"10000","15":"8.23","16":"280","17":"20","18":"1685030503","19":"1","20":"1263","21":"DE","22":"1684983933","23":"1685042914","24":"7200","25":"2911298","26":"Hamburg","27":"200","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>#Challenge 2.1 : Scraping website of www.rosebikes.de to obtain models and price with an analysis if the prices are reasonable</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_bee70008a9b62cd68f06b5682925da52">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.de/"</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Website Scraping</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>model_names <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span>           <span class="co">#Finding elements with model names</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">html_nodes</span>(<span class="st">".products-slider-tile__product-name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a>prices <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">html_nodes</span>(<span class="st">".product-tile-price__current-value"</span>) <span class="sc">%&gt;%</span>   <span class="co">#Obtaining prices for different models</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-15"><a href="#cb10-15"></a>price <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^0-9.,]"</span>, <span class="st">""</span>, prices)  </span>
+<span id="cb10-16"><a href="#cb10-16"></a></span>
+<span id="cb10-17"><a href="#cb10-17"></a>database <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(   <span class="co">#Converting the database into a data frame</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>  <span class="at">Model =</span> model_names,</span>
+<span id="cb10-19"><a href="#cb10-19"></a>  <span class="at">Price =</span> price</span>
+<span id="cb10-20"><a href="#cb10-20"></a>)</span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="fu">print</span>(database)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;                                                    Model    Price
+#&gt; 1                                       XLITE 04 Ultegra 3.299,00
+#&gt; 2                                       XLITE 06 Ultegra 3.999,00
+#&gt; 3                                BACKROAD GRX RX810 1x11 2.999,00
+#&gt; 4                                           COUNT SOLO 2   849,00
+#&gt; 5                                            THE BRUCE 2 1.199,00
+#&gt; 6                                  BACKROAD AL GRX RX400 1.999,00
+#&gt; 7                                             SNEAK PLUS 2.399,00
+#&gt; 8                                          ROOT MILLER 1 2.299,00
+#&gt; 9                                        PRO SL DISC 105 1.699,00
+#&gt; 10             BACKROAD Force eTap AXS XPLR 1x12 Limited 4.899,00
+#&gt; 11                                         THRILL HILL 3 3.999,00
+#&gt; 12                            BACKROAD AL GRX RX600 1X11 2.349,00
+#&gt; 13                                   MAYOR PLUS 3 Unisex 4.999,00
+#&gt; 14                             BACKROAD AXS MULLET BUILD 3.999,00
+#&gt; 15                Kettenverschleißlehre mit Kettenhalter     5,45
+#&gt; 16                                   P-BOUNCE Bikeshorts    79,95
+#&gt; 17                              Industrielager 61902-2RS    14,95
+#&gt; 18                            ITAMOS 2 Fahrradhandschuhe    20,95
+#&gt; 19                  SV 42 &amp; 60 28" Wide Rennrad Schlauch     2,95
+#&gt; 20                          FH-S Halter für Apple AirTag     5,95
+#&gt; 21                          SCORPIONE 3 JERSEY Radtrikot    69,95
+#&gt; 22                        Strada E-Bike XL Fahrradträger   439,95
+#&gt; 23                                 VALDES MTB Bikeshorts    84,95
+#&gt; 24                 Multi Cage CF-1 Flaschenhalter Carbon    11,95
+#&gt; 25                   NECK BRACE DBX 3.5 Nackenprotektor    221,95
+#&gt; 26                                  Fly Tex Trinkflasche     5,95
+#&gt; 27              AIRFLEX CHEST PROTECTOR Protektorenweste   145,95
+#&gt; 28 Grand Prix 5000 Rennradreifen, Faltreifen (Tube-Type)    34,95
+#&gt; 29       Shock Blow - Dämpferpumpe und Federgabelpumpe -    19,95</code></pre>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
