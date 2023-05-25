@@ -1,8 +1,56 @@
 ---
 title: "Data Acquisition"
-author: "Joschka Schwarz"
+author: "Jeevan Kumar Hemasunder Latha"
 ---
+# Challenge 2.1 : Getting data from openweathermap.org using API
+##Load Libraries
+```{r}
+library(tidyverse)
+library(tibble)
+library(readr)
+library(dplyr)
+library(magrittr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+library(readxl)
+library(lubridate)
+library(httr)
+library(jsonlite)
+library(rvest)
+```
+##Rendering content from openweathermap.org with a personal API key
+```{r}
+resp <- GET("https://api.openweathermap.org/data/2.5/weather?q=Hamburg&appid=2b60954937a5a13b2d465e54edad9aa2")   #Reading content from the website
+weather_data <- fromJSON(content(resp, "text")) %>%  
+  as.data.frame()                               #converting the raw data into text format and creating a data fram
+weather_data
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```
+#Challenge 2.1 : Scraping website of www.rosebikes.de to obtain models and price with an analysis if the prices are reasonable
+```{r}
+url <- "https://www.rosebikes.de/"
+
+# Website Scraping
+html <- read_html(url)
+
+model_names <- html %>%           #Finding elements with model names
+  html_nodes(".products-slider-tile__product-name") %>%
+  html_text()
+
+
+prices <- html %>%
+  html_nodes(".product-tile-price__current-value") %>%   #Obtaining prices for different models
+  html_text()
+
+price <- gsub("[^0-9.,]", "", prices)  
+
+database <- data.frame(   #Converting the database into a data frame
+  Model = model_names,
+  Price = price
+)
+print(database)
+
+
+```
+
